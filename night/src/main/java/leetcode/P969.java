@@ -7,6 +7,9 @@ import java.util.List;
 /**
  * 2022-2-19
  * 每日一题
+ *
+ * 例2431 - 先进行操作变为xxx4，再弄xx34，x234, 1234
+ * 先找到4的位置，把当前4的位置的前几个数进行反转，把4放到第一位，然后反转4位，以此类推。。。
  */
 public class P969 {
     public static void main(String[] args) {

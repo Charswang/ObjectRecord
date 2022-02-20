@@ -5,8 +5,30 @@ package leetcode;
  *
  * @author charswang
  * @since 2021-8-27
+ *
+ * 2022-2-20
  */
 public class P36_UNFINISH {
+    public boolean isValidSudoku2(char[][] board) {
+        int[][] column = new int[9][9];
+        int[][] row = new int[9][9];
+        int[][] block = new int[9][9];
+        for (int i = 0;i < 9;i++){
+            for (int j = 0;j < 9;j++){
+                if (board[i][j]!='.'){
+                    int a = board[i][j] - '1';
+                    int b = j/3 + i/3*3;
+                    if (column[j][a]==1 || row[i][a]==1 || block[b][a]==1){
+                        return false;
+                    }
+                    column[j][a]=1;
+                    row[i][a]=1;
+                    block[b][a]=1;
+                }
+            }
+        }
+        return true;
+    }
     public boolean isValidSudoku(char[][] board) {
         // 第i行的某个数是否出现
         int[][] rows = new int[9][9];

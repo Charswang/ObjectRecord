@@ -16,6 +16,17 @@ public class P206 {
         System.out.println(reverseList(a).val);
 
     }
+    // 1 2 3 4 5
+    public ListNode reverseList2(ListNode head) {
+        ListNode p = null;
+        while (head!=null){
+            ListNode q = head.next;
+            head.next=p;
+            p = head;
+            head = q;
+        }
+        return p;
+    }
     public static ListNode reverseList(ListNode head) {
         // 12345 -- 54321
         if (head==null){

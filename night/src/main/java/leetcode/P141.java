@@ -8,6 +8,22 @@ public class P141 {
 
     }
 
+    public boolean hasCycle2(ListNode head) {
+        ListNode p = head;
+        ListNode q = head;
+        while (p!=null && q!=null){
+            p = p.next;
+            if (q.next!=null){
+                q = q.next.next;
+            }else {
+                return false;
+            }
+            if (q==p){
+                return true;
+            }
+        }
+        return false;
+    }
     /**
      * 快慢指针判断链表十分有环
      * @param head

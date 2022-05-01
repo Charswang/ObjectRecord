@@ -2,6 +2,10 @@ package leetcode;
 
 import java.util.*;
 
+/**
+ * 2022-5-1
+ * 每日一题
+ */
 public class P1305 {
     public List<Integer> getAllElements(TreeNode root1, TreeNode root2) {
         // 中序遍历得到的结果是二叉搜索树的顺序搜索

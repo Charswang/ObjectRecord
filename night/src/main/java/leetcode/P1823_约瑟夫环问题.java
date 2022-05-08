@@ -7,7 +7,7 @@ import java.util.List;
  * 2022-5-4
  * 每日一题
  */
-public class P1823 {
+public class P1823_约瑟夫环问题 {
     public static void main(String[] args) {
         int theWinner = findTheWinner(6, 500);
         System.out.println(theWinner);

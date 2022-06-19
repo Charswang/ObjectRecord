@@ -6,13 +6,13 @@ import java.util.Random;
  * 2022-6-5
  * 每日一题
  */
-public class P478 {
+public class P478_NO {
     double radius;
     double x_center;
     double y_center;
     Random r;
 
-    public P478(double radius, double x_center, double y_center) {
+    public P478_NO(double radius, double x_center, double y_center) {
         this.radius = radius;
         this.x_center = x_center;
         this.y_center = y_center;

@@ -4,9 +4,8 @@ import java.util.*;
 
 /**
  * 2022-7-17
- *
+ * <p>
  * 第二题【maximumSum】-- 简单的，但是自己就是忽略了list的排序来优化时间，导致超出时间限制。。。
- *
  */
 public class P22_07_17 {
     public static void main(String[] args) {
@@ -66,4 +65,49 @@ public class P22_07_17 {
         return sum;
     }
 
+
+    public int[] smallestTrimmedNumbers(String[] nums, int[][] queries) {
+        int[] res = new int[queries.length];
+        for (int i = 0; i < queries.length; i++) {
+            String[] a = nums.clone();
+            HashMap<String, List<Integer>> map = new HashMap<>();
+            for (int j = 0; j < a.length; j++) {
+                a[j] = a[j].substring(a[j].length() - queries[i][1]);
+                if (map.containsKey(a[j])) {
+                    List<Integer> list = map.get(a[j]);
+                    list.add(j);
+                    map.put(a[j],list);
+                }else {
+                    List<Integer> list = new ArrayList<>();
+                    list.add(j);
+                    map.put(a[j],list);
+                }
+            }
+            Arrays.sort(a, new Comparator<String>() {
+                @Override
+                public int compare(String o1, String o2) {
+                    int len = o1.length();
+                    for (int i = 0; i < len; i++) {
+                        int i1 = Integer.parseInt(o1.charAt(i) + "");
+                        int i2 = Integer.parseInt(o2.charAt(i) + "");
+                        if (i1 != i2) {
+                            // 正常情况下直接返回o1-o2就是升序；o2-o1就是降序。
+                            // 返回负数或者0就不需要换位置；返回正数就需要更换位置
+                            return i1 - i2;
+                        }
+                    }
+                    return 0;
+                }
+            });
+            int t = queries[i][0]-1;
+            int b = 0;
+            while (t>0 && a[t].equals(a[t-1])){
+                t--;
+                b++;
+            }
+            List<Integer> list = map.get(a[t]);
+            res[i] = list.get(b);
+        }
+        return res;
+    }
 }
